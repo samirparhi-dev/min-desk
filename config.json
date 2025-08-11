@@ -1,0 +1,38 @@
+{
+  "desktop": {
+    "wallpaper": "/usr/share/backgrounds/podXs.jpg",
+    "font_name": "Inter",
+    "font_size": 12,
+    "theme": "dark"
+  },
+  "applications": {
+    "file_manager": {
+      "enabled": true,
+      "icon": "📁",
+      "default_path": "/home"
+    },
+    "package_manager": {
+      "enabled": true,
+      "icon": "📦",
+      "backend": "apk"
+    },
+    "browser": {
+      "enabled": true,
+      "icon": "🌐",
+      "homepage": "https://start.duckduckgo.com",
+      "minimal_mode": true
+    }
+  },
+  "packages_to_install": [
+    "firefox-esr",
+    "ttf-liberation",
+    "mesa-gl",
+    "mesa-dri-gallium",
+    "xf86-video-vesa"
+  ],
+  "system": {
+    "dpi": 96,
+    "vsync": true,
+    "compositor": false
+  }
+}

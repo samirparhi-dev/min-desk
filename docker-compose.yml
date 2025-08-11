@@ -1,0 +1,70 @@
+version: "3.8"
+
+services:
+  min-desk:
+    image: min-desk:latest
+    container_name: min-desk
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DISPLAY=:0
+      - ENABLE_VNC=true
+      - AUTO_OPEN_VNC=true
+      - XDG_RUNTIME_DIR=/tmp/runtime-desktop
+    ports:
+      - "5900:5900" # VNC port
+    volumes:
+      # X11 socket (for local display, optional)
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # Configuration directory
+      - ./config.json:/etc/min-desk/config.json:ro
+      # User documents
+      - ./data/documents:/home/desktop/Documents:rw
+      # Optional: Custom backgrounds
+      - ./data/backgrounds:/usr/share/backgrounds:ro
+    devices:
+      # GPU access (optional, comment out if not needed)
+      - /dev/dri:/dev/dri
+    networks:
+      - min-desk-net
+    restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN # Required for some package operations
+    security_opt:
+      - apparmor:unconfined # For Alpine compatibility
+      - seccomp:unconfined
+    healthcheck:
+      test: ["CMD", "pgrep", "min-desk"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Web-based VNC client
+  novnc:
+    image: theasp/novnc:latest
+    container_name: min-desk-novnc
+    environment:
+      - DISPLAY_WIDTH=1280
+      - DISPLAY_HEIGHT=720
+      - RUN_XTERM=no
+    ports:
+      - "6080:8080" # NoVNC web interface
+    networks:
+      - min-desk-net
+    depends_on:
+      - min-desk
+    restart: unless-stopped
+    command: --vnc min-desk:5900
+    # Access at: http://localhost:6080/vnc.html
+
+networks:
+  min-desk-net:
+    driver: bridge
+
+volumes:
+  min-desk-config:
+    driver: local
+  min-desk-data:
+    driver: local

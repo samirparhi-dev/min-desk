@@ -1,0 +1,60 @@
+# Build artifacts
+target/
+Cargo.lock
+
+# Development files
+.git/
+.gitignore
+*.swp
+*.swo
+*~
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp/
+*.tmp
+*.temp
+
+# Test files
+tests/
+test_results/
+
+# Examples and templates
+examples/
+templates/
+
+# Scripts not needed in container
+scripts/install-*.sh
+scripts/uninstall.sh
+
+# Local configuration
+.env
+.env.local
+config/local.json
+
+# Logs
+*.log
+logs/

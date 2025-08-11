@@ -1,0 +1,89 @@
+# Rust build artifacts
+/target/
+**/*.rs.bk
+*.pdb
+Cargo.lock
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Build and temporary files
+/build/
+/dist/
+/tmp/
+*.tmp
+*.bak
+*.log
+
+# Docker/Podman artifacts
+*.tar
+*.tar.gz
+*.tar.bz2
+min-desk-*.tar.gz
+
+# User data and runtime
+/data/
+/home/
+/config/
+*.pid
+*.sock
+
+# VNC and display files
+*.vnc
+.Xauthority
+.X11-unix/
+
+# Test and coverage
+/coverage/
+*.profraw
+*.profdata
+/test-results/
+
+# Cache directories
+.cargo/
+.rustup/
+.cache/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# System files
+.directory
+.Trash-*
+.nfs*
+
+# Documentation build
+/docs/_build/
+/docs/.doctrees/
+
+# Package manager cache
+/node_modules/
+/vendor/
+
+# Binary outputs
+/min-desk
+/minimal-desktop
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Backup files
+*.backup
+*.old
+*.orig
+
+# Security sensitive files
+*.key
+*.pem
+*.crt
+*.pfx
+/secrets/
